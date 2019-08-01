@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'SBL Hebrew';
+    src: url('SBLHebrew.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.biblical-hebrew {
+    font-family: 'SBL Hebrew';
+    font-weight: normal;
+    font-style: normal;
+}
