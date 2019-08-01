@@ -47,7 +47,7 @@ class Home extends Component<any, any> {
             <Form>
                 <Label for="task">Task:</Label>
                 <select className="form-control" id="task" value={this.state.task} onChange={this.formToState}>
-                    {Tasks.map(
+                    {Tasks.filter((t) => (t.words().length > 0)).map(
                         (task, idx) => <option key={idx} value={task.slug()}>{task.description()}</option>)}
                 </select>
                 <Label for="options">Options:</Label>

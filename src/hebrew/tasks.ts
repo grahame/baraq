@@ -45,14 +45,6 @@ export class Task {
 
 const Tasks: Array<Task> = [
     {
-        slug: "all",
-        description: "All words",
-        range: {
-            start: 1,
-            end: Infinity,
-        }
-    },
-    {
         range: {
             start: 1,
             end: 15
@@ -84,6 +76,12 @@ const Tasks: Array<Task> = [
     },
     {
         range: {
+            start: 1,
+            end: 100
+        }
+    },
+    {
+        range: {
             start: 101,
             end: 120
         }
@@ -103,6 +101,12 @@ const Tasks: Array<Task> = [
     {
         range: {
             start: 181,
+            end: 200
+        }
+    },
+    {
+        range: {
+            start: 101,
             end: 200
         }
     },
@@ -134,6 +138,14 @@ const Tasks: Array<Task> = [
         range: {
             start: 301,
             end: 310
+        }
+    },
+    {
+        slug: "all",
+        description: "All words",
+        range: {
+            start: 1,
+            end: Infinity,
         }
     },
 ].map(x => new Task(x));

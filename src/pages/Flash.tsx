@@ -174,7 +174,12 @@ class Flash extends Component<RouteComponentProps<FlashParams>, FlashState> {
     quizWord() {
         return <div>
             <Container fluid={true}>
-                <Progress color="success" value={this.progress()} />
+                <Progress striped color="success" value={this.progress()} />
+                <Row>
+                    <Col className="text-center">
+                        { this.state.index + 1 } / { this.words.length }
+                    </Col>
+                </Row>
                 <Row className="w-100">
                     <Col className="text-center col-12 h-100">
                         <WordDisplay word={this.currentWord()} onResult={(c) => this.wordResult(c)} />
@@ -185,7 +190,7 @@ class Flash extends Component<RouteComponentProps<FlashParams>, FlashState> {
     }
 
     progress() {
-        if (this.words.length == 0) {
+        if (this.words.length === 0) {
             return 0;
         }
         let val = 100 * this.state.results.length / this.words.length;
