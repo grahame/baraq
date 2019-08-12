@@ -10,3 +10,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.print-row-definition {
+    min-height: 6em;
+}

@@ -35,7 +35,7 @@ class ResultTable extends Component<ResultTableProps> {
                                 }
                             </td>
                             <td className="text-right">{word.forms.map(
-                                (form, i) => <div key={i} className="hebrew">{form}</div>)}
+                                (form, i) => <div key={i} className="biblical-hebrew">{form}</div>)}
                             </td>
                             <td>{word.definition}</td>
                         </tr>

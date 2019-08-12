@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Label, Form, Button, Container } from 'reactstrap';
+import { Label, Form, Button, ButtonGroup, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { FlashOptions } from './Flash'
+import { FlashOptions } from '../cards'
 import Tasks from '../hebrew/tasks'
 
 class Home extends Component<any, any> {
@@ -27,7 +27,11 @@ class Home extends Component<any, any> {
     }
 
     taskLink() {
-        return `/${this.state.task}/${this.state.options}/`;
+        return `/quiz/${this.state.task}/${this.state.options}/`;
+    }
+
+    worksheetLink() {
+        return `/worksheet/${this.state.task}/${this.state.options}/`;
     }
 
     render() {
@@ -56,7 +60,10 @@ class Home extends Component<any, any> {
                     <option value={FlashOptions.LastToFirst}>Last to First</option>
                     <option value={FlashOptions.Shuffle}>Shuffle</option>
                 </select>
-                <Button className="col-12 mt-2" color="primary" tag={Link} to={this.taskLink()}>Start quiz!</Button>
+                <ButtonGroup className="w-100">
+                    <Button className="col-12 mt-2 mr-2" color="secondary" tag={Link} to={this.worksheetLink()}>Print worksheet</Button>
+                    <Button className="col-12 mt-2" color="primary" tag={Link} to={this.taskLink()}>Start quiz!</Button>
+                </ButtonGroup>
             </Form>
             </Container>
         </div>;

@@ -5,7 +5,7 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 class Header extends Component<{}, {}> {
     render() {
         return <div>
-            <Navbar color="light" light expand="md">
+            <Navbar className="d-print-none" color="light" light expand="md">
                 <NavbarBrand tag={Link} to="/">baraq: Flashcards for Biblical Hebrew</NavbarBrand>
             </Navbar>
 

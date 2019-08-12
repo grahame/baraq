@@ -25,7 +25,7 @@ export class Word {
 let words: Array<Word> = [
     {
         position: [1, 0],
-        forms: ["יהיה"],
+        forms: ["יהוה"],
         definition: "Adonai, Lord",
     },
     {
@@ -1006,7 +1006,7 @@ let words: Array<Word> = [
     {
         position: [134, 0],
         forms: ["אַרְבַּע"],
-        definition: "for (with f. nouns)",
+        definition: "four (with f. nouns)",
     },
     {
         position: [134, 1],
