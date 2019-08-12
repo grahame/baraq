@@ -37,7 +37,7 @@ class Home extends Component<any, any> {
     render() {
         return <div>
             <Container>
-            <h1 className="text-center">בָּרַק</h1>
+            <h1 className="text-center biblical-hebrew">בָּרַק</h1>
             <p>
                 This webpage has been created as a resource for students of Biblical Hebrew.
                 The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. This site is not endorsed by the authors of the textbook, but has been created to (hopefully) be of use to its readers.
