@@ -59,6 +59,7 @@ class Home extends Component<any, any> {
                     <option value={FlashOptions.FirstToLast}>First to Last</option>
                     <option value={FlashOptions.LastToFirst}>Last to First</option>
                     <option value={FlashOptions.Shuffle}>Shuffle</option>
+                    <option value={FlashOptions.Sorted}>Sorted</option>
                 </select>
                 <ButtonGroup className="w-100">
                     <Button className="col-12 mt-2 mr-2" color="secondary" tag={Link} to={this.worksheetLink()}>Print worksheet</Button>

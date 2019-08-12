@@ -5,6 +5,7 @@ export enum FlashOptions {
     FirstToLast = "ascending",
     LastToFirst = "descending",
     Shuffle = "shuffle",
+    Sorted = "sorted",
 };
 
 export class Cards {
@@ -43,10 +44,16 @@ export class Cards {
             return [];
         }
         let words = this.task.words();
-        if (this.options === FlashOptions.LastToFirst) {
-            words.reverse();
-        } else if (this.options === FlashOptions.Shuffle) {
-            shuffle(words);
+        switch (this.options) {
+            case FlashOptions.LastToFirst:
+                words.reverse();
+                break;
+            case FlashOptions.Shuffle:
+                shuffle(words);
+                break;
+            case FlashOptions.Sorted:
+                words.sort((a, b) => a.forms === b.forms ? 0 : (a.forms < b.forms ? -1 : 1));
+                break;
         }
         return words;
     }
