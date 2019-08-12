@@ -960,7 +960,7 @@ let words: Array<Word> = [
     },
     {
         position: [127, 1],
-        forms: ["טוֹו"],
+        forms: ["טוֹב"],
         definition: "benefit (noun)",
     },
     {
@@ -970,7 +970,7 @@ let words: Array<Word> = [
     },
     {
         position: [128, 1],
-        forms: ["מְלָאַךְ"],
+        forms: ["מְלָאכָה"],
         definition: "work, occupation (f.)",
     },
     {
