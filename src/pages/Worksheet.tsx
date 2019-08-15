@@ -33,11 +33,11 @@ class Flash extends Component<RouteComponentProps<FlashParams>> {
     }
 
     render() {
-        return <Container><table className="worksheet table table-bordered">
+        return <Container><table className="worksheet table">
             <tbody>
                 {
                     this.words.map(
-                        (word, i) => <tr key={i} className="d-flex">
+                        (word, i) => <tr key={i} className="d-flex print-row-definition">
                             <td className="col-7"></td>
                             <td className="text-right col-3">{word.forms.map(
                                 (form, i) => <div key={i} className="biblical-hebrew display-4">{form}</div>)}

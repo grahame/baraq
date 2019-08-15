@@ -5,6 +5,10 @@
     font-style: normal;
 }
 
+table.worksheet tr td {
+    border-top: 3px solid black;
+}
+
 .biblical-hebrew {
     font-family: 'SBL Hebrew';
     font-weight: normal;
@@ -12,5 +16,5 @@
 }
 
 .print-row-definition {
-    min-height: 6em;
+    min-height: 8em;
 }
