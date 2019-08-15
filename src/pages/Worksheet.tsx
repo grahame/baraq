@@ -38,13 +38,13 @@ class Flash extends Component<RouteComponentProps<FlashParams>> {
                 {
                     this.words.map(
                         (word, i) => <tr key={i} className="d-flex">
-                            <td className="col-2">
-                                    { word.bookReference() }. { word.definition }
-                            </td>
+                            <td className="col-7"></td>
                             <td className="text-right col-3">{word.forms.map(
                                 (form, i) => <div key={i} className="biblical-hebrew display-4">{form}</div>)}
                             </td>
-                            <td className="col-7"></td>
+                            <td className="col-2">
+                                    { word.bookReference() }. { word.definition }
+                            </td>
                         </tr>
                     )
                 }
