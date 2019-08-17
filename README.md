@@ -5,7 +5,10 @@ A flash card app for language students.
 - easy to build word lists
 - easy to subset / slice word lists
 
-The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. Thanks for Victoria Hoffer for her permission to use the word list in developing this web application.
+The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. Thanks to Victoria Hoffer for her kind permission to use the word list in developing this web application.
+
+Image of lightning is by Wikimedia user Nelumadau:
+https://commons.wikimedia.org/wiki/File:Lightning_over_Oradea_Romania_3.jpg
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
