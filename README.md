@@ -5,6 +5,8 @@ A flash card app for language students.
 - easy to build word lists
 - easy to subset / slice word lists
 
+The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. Thanks for Victoria Hoffer for her permission to use the word list in developing this web application.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
