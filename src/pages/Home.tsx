@@ -40,7 +40,7 @@ class Home extends Component<any, any> {
             <h1 className="text-center biblical-hebrew">בָּרַק</h1>
             <p>
                 This webpage has been created as a resource for students of Biblical Hebrew.
-                The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. Thanks for Victoria Hoffer for her permission to use the word list on this site.
+                The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. Thanks to Victoria Hoffer for her kind permission to use the word list on this site.
             </p>
             <p>
                 Hebrew text is shown using the <a href="https://www.sbl-site.org/educational/BiblicalFonts_SBLHebrew.aspx">Society of Biblical Literature Hebrew font</a>.
