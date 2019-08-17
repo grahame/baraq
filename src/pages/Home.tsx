@@ -40,13 +40,13 @@ class Home extends Component<any, any> {
             <h1 className="text-center biblical-hebrew">בָּרַק</h1>
             <p>
                 This webpage has been created as a resource for students of Biblical Hebrew.
-                The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. This site is not endorsed by the authors of the textbook, but has been created to (hopefully) be of use to its readers.
+                The word list is taken from <a href="https://yalebooks.yale.edu/book/9780300222647/biblical-hebrew-second-ed-text-and-workbook">Biblical Hebrew, Second Ed. (Text and Workbook)</a> by Bonnie Pedrotti Kittel, Victoria Hoffer, and Rebecca Abts Wright; Fully revised by Victoria Hoffer. Thanks for Victoria Hoffer for her permission to use the word list on this site.
             </p>
             <p>
                 Hebrew text is shown using the <a href="https://www.sbl-site.org/educational/BiblicalFonts_SBLHebrew.aspx">Society of Biblical Literature Hebrew font</a>.
             </p>
             <p>
-                Developed by <a href="mailto:grahame@oreamnos.com.au">Grahame Bowland</a>.
+                Developed by <a href="mailto:grahame@oreamnos.com.au">Grahame Bowland</a>, a theology student at <a href="https://www.murdoch.edu.au/study/courses/course-details/Graduate-Certificate-in-Theology-(GradCertTheol)#">Murdoch University</a>. Please get in touch you encounter any issues, or spot any transcription errors in the word list.
             </p>
             <Form>
                 <Label for="task">Task:</Label>

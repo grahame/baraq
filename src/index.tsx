@@ -1,3 +1,7 @@
+// https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/stable';
+
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';

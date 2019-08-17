@@ -44,11 +44,13 @@ class Flash extends Component<RouteComponentProps<FlashParams>, FlashState> {
     }
 
     wordsPartiallyWrong() {
-        // words we get at least one of the versions of wrong
-        let primaries = new Set(
-            this.state.results.filter(
+        // would directly build the Set, but doesn't work in IE11
+        let primaries: Set<number> = new Set();
+        for (let position of this.state.results.filter(
                 ([correct]) => !correct).map(
-                    ([correct, word]) => word.position[0]));
+                    ([correct, word]) => word.position[0])) {
+            primaries.add(position);
+        }
         return this.cards.get_words_in(primaries);
     }
 
