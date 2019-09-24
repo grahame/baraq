@@ -73,6 +73,8 @@ class Home extends Component<any, any> {
 
 function mapStateToProps(state) {
     return {
+        options: state.options,
+        
     }
 }
 
