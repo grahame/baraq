@@ -1836,7 +1836,7 @@ let words: Array<Word> = [
     {
         position: [275, 0],
         forms: ["רֶ֫כֶב"],
-        definition: "chariot, group of chariotsj",
+        definition: "chariot, group of chariots",
     },
     {
         position: [276, 0],
@@ -1860,8 +1860,8 @@ let words: Array<Word> = [
     },
     {
         position: [280, 0],
-        forms: [""],
-        definition: "",
+        forms: ["שָׁרַף"],
+        definition: "he burned",
     },
     {
         position: [281, 0],
