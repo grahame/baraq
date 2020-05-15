@@ -1,4 +1,4 @@
-import Words, {Word} from './words'
+import Words, { Word } from './words'
 
 export interface Range {
     start: Number,
@@ -44,6 +44,14 @@ export class Task {
 }
 
 const Tasks: Array<Task> = [
+    {
+        slug: "all",
+        description: "All words",
+        range: {
+            start: 1,
+            end: Infinity,
+        }
+    },
     {
         range: {
             start: 1,
@@ -147,11 +155,9 @@ const Tasks: Array<Task> = [
         }
     },
     {
-        slug: "all",
-        description: "All words",
         range: {
-            start: 1,
-            end: Infinity,
+            start: 281,
+            end: 310
         }
     },
 ].map(x => new Task(x));
