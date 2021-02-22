@@ -1,6 +1,11 @@
-// https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md
-import 'react-app-polyfill/ie9';
-import 'react-app-polyfill/stable';
+import 'core-js/es/map';
+import 'core-js/es/set';
+import 'core-js/es/symbol';
+import 'core-js/es/promise';
+import 'core-js/es/symbol/iterator';
+import 'core-js/es/object/assign';
+import 'core-js/es/string/replace-all';
+import 'raf/polyfill'
 
 import { Provider } from 'react-redux';
 import React from 'react';
