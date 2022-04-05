@@ -1,12 +1,12 @@
-import { Word } from './hebrew/words';
-import Tasks, { Task } from './hebrew/tasks'
+import { Word } from "./hebrew/words";
+import Tasks, { Task } from "./hebrew/tasks";
 
 export enum FlashOptions {
     FirstToLast = "ascending",
     LastToFirst = "descending",
     Shuffle = "shuffle",
     Sorted = "sorted",
-};
+}
 
 export class Cards {
     slug: string;
@@ -16,8 +16,7 @@ export class Cards {
     constructor(slug: string, options: FlashOptions) {
         this.slug = slug;
         this.options = options;
-        let matches = Tasks.filter(
-            task => (task.slug() === this.slug));
+        let matches = Tasks.filter((task) => task.slug() === this.slug);
         if (matches.length === 1) {
             this.task = matches[0];
         }
@@ -52,15 +51,14 @@ export class Cards {
                 shuffle(words);
                 break;
             case FlashOptions.Sorted:
-                words.sort((a, b) => a.forms === b.forms ? 0 : (a.forms < b.forms ? -1 : 1));
+                words.sort((a, b) => (a.forms === b.forms ? 0 : a.forms < b.forms ? -1 : 1));
                 break;
         }
         return words;
     }
 
     get_words_in(primary_set: Set<number>): Word[] {
-        return this.get_words().filter(
-            (word) => (primary_set.has(word.position[0])));
+        return this.get_words().filter((word) => primary_set.has(word.position[0]));
     }
 
     equals(other: Cards) {
@@ -69,6 +67,6 @@ export class Cards {
 }
 
 export interface FlashParams {
-    slug: string,
-    options: FlashOptions,
+    slug: string;
+    options: FlashOptions;
 }

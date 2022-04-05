@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'SBL Hebrew';
-    src: url('SBLHebrew.woff2') format('woff2');
+    font-family: "SBL Hebrew";
+    src: url("SBLHebrew.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
 }
@@ -10,7 +10,7 @@ table.worksheet tr td {
 }
 
 .biblical-hebrew {
-    font-family: 'SBL Hebrew';
+    font-family: "SBL Hebrew";
     font-weight: normal;
     font-style: normal;
 }

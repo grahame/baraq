@@ -1,26 +1,19 @@
+const letters = ["a", "b", "c", "d", "e", "f", "g"];
 
-const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-
-export class Word {
-    position: [number, number];
-    forms: Array<string>;
+export interface Word {
+    position: number[];
+    forms: string[];
     definition: string;
-
-    constructor({position, forms, definition}) {
-        this.position = position;
-        this.forms = forms;
-        this.definition = definition;
-    }
-
-    bookReference() {
-        let [posNum, posLetter] = this.position;
-        let ref = posNum.toString();
-        if (posLetter > 0) {
-            ref += letters[posLetter - 1];
-        }
-        return ref;
-    }
 }
+
+export const bookReference = (w: Word) => {
+    let [posNum, posLetter] = w.position;
+    let ref = posNum.toString();
+    if (posLetter > 0) {
+        ref += letters[posLetter - 1];
+    }
+    return ref;
+};
 
 let words: Array<Word> = [
     {
@@ -351,7 +344,7 @@ let words: Array<Word> = [
     {
         position: [47, 1],
         forms: ["עַיִן"],
-        definition: "spring, fountain (f.)"
+        definition: "spring, fountain (f.)",
     },
     {
         position: [48, 0],
@@ -2013,6 +2006,6 @@ let words: Array<Word> = [
         forms: ["רָעָב"],
         definition: "famine, hunger",
     },
-].filter((d) => d.definition !== "").map((d) => new Word(d));
+].filter((d) => d.definition !== "");
 
 export default words;
