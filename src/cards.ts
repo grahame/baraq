@@ -60,13 +60,9 @@ export class Cards {
     get_words_in(primary_set: Set<number>): Word[] {
         return this.get_words().filter((word) => primary_set.has(word.position[0]));
     }
-
-    equals(other: Cards) {
-        return this.slug === other.slug && this.options === other.options;
-    }
 }
 
-export interface FlashParams {
+export type FlashRouteParams = {
     slug: string;
     options: FlashOptions;
-}
+};

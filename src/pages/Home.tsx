@@ -1,8 +1,6 @@
 import React, { Component, ComponentProps } from "react";
 import { Label, Form, Button, ButtonGroup, Container } from "reactstrap";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import { FlashOptions } from "../cards";
 import Tasks from "../hebrew/tasks";
 
@@ -85,10 +83,10 @@ class Home extends Component<any, any> {
                             <option value={FlashOptions.Sorted}>Sorted</option>
                         </select>
                         <ButtonGroup className="w-100">
-                            <Button className="col-12 mt-2 mr-2" color="secondary" tag={Link} to={this.worksheetLink()}>
+                            <Button className="col-4 mt-2 mr-2" color="secondary" tag={Link} to={this.worksheetLink()}>
                                 Print worksheet
                             </Button>
-                            <Button className="col-12 mt-2" color="primary" tag={Link} to={this.taskLink()}>
+                            <Button className="col-4 mt-2" color="primary" tag={Link} to={this.taskLink()}>
                                 Start quiz!
                             </Button>
                         </ButtonGroup>
@@ -99,14 +97,4 @@ class Home extends Component<any, any> {
     }
 }
 
-function mapStateToProps(state: any) {
-    return {
-        options: state.options,
-    };
-}
-
-function mapDispatchToProps(dispatch: any) {
-    return bindActionCreators({}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

@@ -1,200 +1,174 @@
-import React, { Component } from "react";
+import React from "react";
 import { Row, Col, Progress, Container, ButtonGroup, Button } from "reactstrap";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { RouteComponentProps } from "react-router-dom";
 import { Word } from "../hebrew/words";
 import WordDisplay from "../components/word";
 import ResultTable from "../components/resulttable";
-import { FlashParams, Cards } from "../cards";
+import { Cards } from "../cards";
+import { CardProps } from "../components/CardProvider";
 
-interface FlashState {
-    index: number;
-    complete: boolean;
-    results: [boolean, Word][];
-}
+export type Result = [boolean, Word];
 
-const initialState = {
-    index: 0,
-    results: [],
-};
-
-class Flash extends Component<RouteComponentProps<FlashParams>, FlashState> {
+interface FlashParams {
     cards: Cards;
     words: Word[];
+    index: number;
+    results: Result[];
+    nextWord: () => void;
+    restart: () => void;
+    restartIncorrect: () => void;
+    setResults: React.Dispatch<React.SetStateAction<Result[]>>;
+}
 
-    constructor(props: RouteComponentProps<FlashParams>) {
-        super(props);
-        this.cards = this.make_cards();
-        this.words = this.cards.get_words();
-        this.state = {
-            complete: this.words.length === 0,
-            ...initialState,
-        };
+const progress = (words: Word[], results: Result[]) => {
+    if (words.length === 0) {
+        return 0;
+    }
+    let val = (100 * results.length) / words.length;
+    return val;
+};
+
+const wordsPartiallyWrong = (cards: Cards, results: Result[]) => {
+    // would directly build the Set, but doesn't work in IE11
+    let primaries: Set<number> = new Set();
+    for (let position of results.filter(([correct]) => !correct).map(([correct, word]) => word.position[0])) {
+        primaries.add(position);
+    }
+    return cards.get_words_in(primaries);
+};
+
+const QuizWord: React.FC<React.PropsWithChildren<FlashParams>> = ({
+    cards,
+    words,
+    index,
+    results,
+    setResults,
+    nextWord,
+}) => {
+    const wordResult = (correct: boolean) => {
+        setResults([...results, [correct, words[index]]]);
+        nextWord();
+    };
+
+    return (
+        <div>
+            <Container fluid={true}>
+                <Progress striped color="success" value={progress(words, results)} />
+                <Row>
+                    <Col className="text-center">
+                        {index + 1} / {words.length}
+                    </Col>
+                </Row>
+                <Row className="w-100">
+                    <Col className="text-center col-12 h-100">
+                        <WordDisplay word={words[index]} onResult={(c) => wordResult(c)} />
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
+};
+
+const QuizSummary: React.FC<React.PropsWithChildren<FlashParams>> = ({
+    cards,
+    words,
+    restart,
+    restartIncorrect,
+    results,
+}) => {
+    let correct = results.filter(([correct]) => correct).length;
+    let incorrect = results.filter(([correct]) => !correct).length;
+
+    let per = 0;
+    if (words.length > 0) {
+        per = (100 * correct) / words.length;
     }
 
-    restart() {
-        this.words = this.cards.get_words();
-        this.setState({
-            complete: this.words.length === 0,
-            ...initialState,
-        });
-    }
-
-    wordsPartiallyWrong() {
-        // would directly build the Set, but doesn't work in IE11
-        let primaries: Set<number> = new Set();
-        for (let position of this.state.results
-            .filter(([correct]) => !correct)
-            .map(([correct, word]) => word.position[0])) {
-            primaries.add(position);
-        }
-        return this.cards.get_words_in(primaries);
-    }
-
-    restartIncorrect() {
-        this.words = this.wordsPartiallyWrong();
-        this.setState({
-            complete: this.words.length === 0,
-            ...initialState,
-        });
-    }
-
-    incorrectMessage() {
-        let incorrect = this.state.results.filter(([correct]) => !correct).length;
-        let restart_words = this.wordsPartiallyWrong();
+    const incorrectMessage = () => {
+        let incorrect = results.filter(([correct]) => !correct).length;
+        let restart_words = wordsPartiallyWrong(cards, results);
         let plural = restart_words.length > 1 ? "words" : "word";
         return `Quiz again (${restart_words.length} ${plural} related to the ${incorrect} you got wrong.)`;
-    }
+    };
 
-    make_cards(): Cards {
-        let slug = this.props.match.params.slug;
-        let options = this.props.match.params.options;
-        return new Cards(slug, options);
-    }
-
-    public componentDidUpdate(prevProps: RouteComponentProps<FlashParams>) {
-        let new_cards = this.make_cards();
-        if (!new_cards.equals(this.cards)) {
-            this.cards = new_cards;
-            this.words = this.cards.get_words();
-            this.setState({
-                index: 0,
-            });
-        }
-    }
-
-    currentWord(): Word {
-        return this.words[this.state["index"]];
-    }
-
-    nextWord() {
-        let { index } = this.state;
-        index++;
-        if (index < this.words.length) {
-            this.setState({
-                index: index,
-            });
-        } else {
-            this.setState({ complete: true });
-        }
-    }
-
-    wordResult(correct: boolean) {
-        this.setState({
-            results: [...this.state.results, [correct, this.currentWord()]],
-        });
-        this.nextWord();
-    }
-
-    quizWord() {
-        return (
-            <div>
-                <Container fluid={true}>
-                    <Progress striped color="success" value={this.progress()} />
-                    <Row>
-                        <Col className="text-center">
-                            {this.state.index + 1} / {this.words.length}
-                        </Col>
-                    </Row>
-                    <Row className="w-100">
-                        <Col className="text-center col-12 h-100">
-                            <WordDisplay word={this.currentWord()} onResult={(c) => this.wordResult(c)} />
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
-        );
-    }
-
-    progress() {
-        if (this.words.length === 0) {
-            return 0;
-        }
-        let val = (100 * this.state.results.length) / this.words.length;
-        return val;
-    }
-
-    quizSummary() {
-        let correct = this.state.results.filter(([correct]) => correct).length;
-        let incorrect = this.state.results.filter(([correct]) => !correct).length;
-
-        let per = 0;
-        if (this.words.length > 0) {
-            per = (100 * correct) / this.words.length;
-        }
-
-        return (
-            <div>
-                <Container fluid={true}>
-                    <h1 className="text-center">Quiz complete: {this.cards.description()}</h1>
-                    <p className="lead text-center">
-                        You got {correct} / {this.words.length} correct – {per.toFixed(1)}%.
-                    </p>
-                    <Row className="mt-4 mb-4">
-                        <Col className="text-center">
-                            <ButtonGroup size="lg" vertical={true}>
-                                <Button onClick={() => this.restart()} color="success">
-                                    Quiz again (all words)
+    return (
+        <div>
+            <Container fluid={true}>
+                <h1 className="text-center">Quiz complete: {cards.description()}</h1>
+                <p className="lead text-center">
+                    You got {correct} / {words.length} correct – {per.toFixed(1)}%.
+                </p>
+                <Row className="mt-4 mb-4">
+                    <Col className="text-center">
+                        <ButtonGroup size="lg" vertical={true}>
+                            <Button onClick={() => restart()} color="success">
+                                Quiz again (all words)
+                            </Button>
+                            {incorrect > 0 ? (
+                                <Button onClick={() => restartIncorrect()} color="warning">
+                                    {incorrectMessage()}
                                 </Button>
-                                {incorrect > 0 ? (
-                                    <Button onClick={() => this.restartIncorrect()} color="warning">
-                                        {this.incorrectMessage()}
-                                    </Button>
-                                ) : (
-                                    ""
-                                )}
-                                <Button color="primary" tag={Link} to="/">
-                                    Done
-                                </Button>
-                            </ButtonGroup>
-                        </Col>
-                    </Row>
-                    <h2>Results</h2>
-                    <div className="mt-4">
-                        <ResultTable results={this.state.results} />
-                    </div>
-                </Container>
-            </div>
-        );
-    }
+                            ) : (
+                                ""
+                            )}
+                            <Button color="primary" tag={Link} to="/">
+                                Done
+                            </Button>
+                        </ButtonGroup>
+                    </Col>
+                </Row>
+                <h2>Results</h2>
+                <div className="mt-4">
+                    <ResultTable results={results} />
+                </div>
+            </Container>
+        </div>
+    );
+};
 
-    render() {
-        if (this.state.complete) {
-            return this.quizSummary();
-        } else {
-            return this.quizWord();
+export const Flash: React.FC<CardProps> = ({ cards, words, setWords }) => {
+    const [index, setIndex] = React.useState<number>(0);
+    const [results, setResults] = React.useState<Result[]>([]);
+
+    const nextWord = () => {
+        if (index < words.length) {
+            setIndex(index + 1);
         }
+    };
+
+    const restart = () => {
+        setIndex(0);
+        setResults([]);
+    };
+
+    const restartIncorrect = () => {
+        if (cards) {
+            setWords(wordsPartiallyWrong(cards, results));
+        } else {
+            setWords([]);
+        }
+    };
+
+    if (!cards) {
+        return <></>;
     }
-}
 
-function mapStateToProps(state: FlashState) {
-    return {};
-}
+    const flashParams: FlashParams = {
+        cards: cards,
+        words: words,
+        index: index,
+        results: results,
+        nextWord: nextWord,
+        setResults: setResults,
+        restart: restart,
+        restartIncorrect: restartIncorrect,
+    };
 
-function mapDispatchToProps(dispatch: any) {
-    return bindActionCreators({}, dispatch);
-}
+    if (words.length === 0 || results.length === words.length) {
+        return <QuizSummary {...flashParams} />;
+    } else {
+        return <QuizWord {...flashParams} />;
+    }
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Flash);
+export default Flash;
