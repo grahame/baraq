@@ -53,17 +53,19 @@ const QuizWord: React.FC<React.PropsWithChildren<FlashParams>> = ({
     return (
         <div>
             <Container fluid={true}>
-                <Progress striped color="success" value={progress(words, results)} />
-                <Row>
-                    <Col className="text-center">
-                        {index + 1} / {words.length}
-                    </Col>
-                </Row>
-                <Row className="w-100">
-                    <Col className="text-center col-12 h-100">
-                        <WordDisplay word={words[index]} onResult={(c) => wordResult(c)} />
-                    </Col>
-                </Row>
+                <Col lg={{ offset: 3, size: 6 }} md={{ offset: 2, size: 8 }}>
+                    <Progress striped color="success" value={progress(words, results)} />
+                    <Row>
+                        <Col className="text-center">
+                            {index + 1} / {words.length}
+                        </Col>
+                    </Row>
+                    <Row className="w-100">
+                        <Col className="text-center col-12 h-100">
+                            <WordDisplay word={words[index]} onResult={(c) => wordResult(c)} />
+                        </Col>
+                    </Row>
+                </Col>
             </Container>
         </div>
     );

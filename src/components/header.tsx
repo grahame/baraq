@@ -5,7 +5,7 @@ import { Navbar, NavbarBrand } from "reactstrap";
 const Header: React.FC = () => {
     return (
         <div>
-            <Navbar className="d-print-none" color="light" light expand="md">
+            <Navbar className="d-print-none" expand="md">
                 <NavbarBrand tag={Link} to="/">
                     baraq: Flashcards for Biblical Hebrew
                 </NavbarBrand>
