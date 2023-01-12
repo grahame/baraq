@@ -56,13 +56,9 @@ class Home extends Component<any, any> {
                             .
                         </p>
                         <p>
-                            Developed by <a href="mailto:grahame@oreamnos.com.au">Grahame Bowland</a>, a theology
-                            student at{" "}
-                            <a href="https://www.murdoch.edu.au/study/courses/course-details/Graduate-Certificate-in-Theology-(GradCertTheol)#">
-                                Murdoch University
-                            </a>
-                            . Please get in touch you encounter any issues, or spot any transcription errors in the word
-                            list.
+                            Developed by <a href="mailto:grahame@bowland.au">Grahame Bowland</a>, while a student at
+                            <a href="http://www.wtc.perth.anglican.org/">Wollaston Theological College</a>. Please get
+                            in touch you encounter any issues, or spot any transcription errors in the word list.
                         </p>
                         <Form>
                             <Label for="task">Task:</Label>
