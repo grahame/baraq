@@ -56,7 +56,7 @@ class Home extends Component<any, any> {
                             .
                         </p>
                         <p>
-                            Developed by <a href="mailto:grahame@bowland.au">Grahame Bowland</a>, while a student at
+                            Developed by <a href="mailto:grahame@bowland.au">Grahame Bowland</a>, while a student at{" "}
                             <a href="http://www.wtc.perth.anglican.org/">Wollaston Theological College</a>. Please get
                             in touch you encounter any issues, or spot any transcription errors in the word list.
                         </p>
