@@ -36,7 +36,7 @@ export class Task {
         return [
             ...Words.filter((word) => {
                 let [major] = word.position;
-                return major >= this.defn.range.start && major <= this.defn.range.end;
+                return major >= Number(this.defn.range.start) && major <= Number(this.defn.range.end);
             }),
         ];
     }
