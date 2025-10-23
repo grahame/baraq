@@ -26,8 +26,6 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "lint": "npx prettier --write .",
     "dev": "vite"
   },
@@ -53,7 +51,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/react-router-dom": "^5.3.3",
     "prettier": "^3.6.2",
-    "react-scripts": "5.0.1",
     "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.1.0",
     "@types/node": "^24.9.1",
